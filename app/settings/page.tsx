@@ -51,15 +51,15 @@ export default function SettingsPage() {
             </div>
             <div>
               <label className="text-sm font-medium">Age</label>
-              <Input type="number" value={profile.age} onChange={(e) => updateProfile({ age: parseInt(e.target.value) })} className="mt-1" />
+              <Input type="number" value={profile.age} onChange={(e) => { const v = parseInt(e.target.value); if (!isNaN(v)) updateProfile({ age: v }) }} className="mt-1" />
             </div>
             <div>
               <label className="text-sm font-medium">Weight (kg)</label>
-              <Input type="number" value={profile.weight} onChange={(e) => updateProfile({ weight: parseFloat(e.target.value) })} className="mt-1" />
+              <Input type="number" value={profile.weight} onChange={(e) => { const v = parseFloat(e.target.value); if (!isNaN(v)) updateProfile({ weight: v }) }} className="mt-1" />
             </div>
             <div>
               <label className="text-sm font-medium">Height (cm)</label>
-              <Input type="number" value={profile.height} onChange={(e) => updateProfile({ height: parseFloat(e.target.value) })} className="mt-1" />
+              <Input type="number" value={profile.height} onChange={(e) => { const v = parseFloat(e.target.value); if (!isNaN(v)) updateProfile({ height: v }) }} className="mt-1" />
             </div>
           </div>
           <Button onClick={() => toast.success('Profile saved!')} className="w-full">Save Profile</Button>
@@ -88,7 +88,7 @@ export default function SettingsPage() {
                 <Input
                   type="number"
                   value={value}
-                  onChange={(e) => updateProfile({ goals: { ...profile.goals, [key]: parseFloat(e.target.value) } })}
+                  onChange={(e) => { const v = parseFloat(e.target.value); if (!isNaN(v)) updateProfile({ goals: { ...profile.goals, [key]: v } }) }}
                   className="mt-1"
                 />
               </div>
