@@ -25,7 +25,7 @@ export function useFitnessData() {
     const dayMeals = meals.filter((m) => m.date === date)
     const dayWater = water.find((w) => w.date === date)
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    const d = new Date(date + 'T00:00:00')
+    const d = new Date(date + 'T00:00:00Z')
     return {
       day: days[d.getDay()],
       calories: dayMeals.reduce((sum, m) => sum + m.calories, 0) || Math.floor(Math.random() * 600 + 1600),
